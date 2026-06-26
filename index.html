@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Образование как ценность — исследование ТюмГУ 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2240; --navy2:#102b4f;
+    --ink:#0c2340; --muted:#5b6b7d; --line:#e6ebf2;
+    --blue:#1f6fc4; --blue-bright:#2f86db; --blue-deep:#15579e; --blue-light:#a9ccef;
+    --green:#27975a; --orange:#dd8a28; --red:#df524e; --gray:#8a98a8; --pink:#e89a98;
+    --tint-blue:#eef4fb; --tint-green:#ecf6f0; --tint-orange:#fdf3e8; --tint-red:#fbeeee; --tint-gray:#eef1f5;
+    --bg:#ffffff; --soft:#f5f8fc;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* progress */
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:120}
+  .progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--blue-bright))}
+
+  /* nav */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:110;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:.3s}
+  .nav.attop{background:transparent;border-color:transparent}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+  .logo .mk{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--blue-deep));display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:800;flex:0 0 auto}
+  .nav.attop .logo,.nav.attop .menu a{color:#fff}
+  .nav.attop .logo .mk{background:rgba(255,255,255,.16)}
+  .menu{display:flex;gap:6px;align-items:center}
+  .menu a{padding:8px 13px;border-radius:8px;font-size:14.5px;font-weight:600;color:var(--muted);text-decoration:none;transition:.2s;white-space:nowrap}
+  .menu a:hover{background:var(--tint-blue);color:var(--blue-deep)}
+  .menu a.on{color:var(--blue-deep);background:var(--tint-blue)}
+  .nav.attop .menu a{color:#cdddf0}
+  .nav.attop .menu a.on,.nav.attop .menu a:hover{color:#fff;background:rgba(255,255,255,.14)}
+  .burger{display:none;background:none;border:0;cursor:pointer;font-size:24px;color:inherit}
+
+  /* hero */
+  .hero{min-height:100vh;display:flex;align-items:center;color:#fff;position:relative;overflow:hidden;
+    background:radial-gradient(130% 110% at 78% 0%,#16365d 0%,var(--navy) 52%,#07172b 100%)}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(40% 50% at 85% 80%,rgba(47,134,219,.18),transparent 70%)}
+  .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-light);margin-bottom:20px}
+  .hero h1{font-size:clamp(44px,7vw,92px);font-weight:800;line-height:1.0;letter-spacing:-.025em;max-width:14ch}
+  .hero .sub{font-size:clamp(17px,2vw,23px);font-weight:500;color:#bdd2ea;margin-top:26px;max-width:46ch}
+  .hero .team{margin-top:30px;font-size:15.5px;color:#9fb6d4}
+  .hero .team b{color:#e7f0fb}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:11px;font-weight:700;font-size:15.5px;text-decoration:none;cursor:pointer;border:0;transition:.22s}
+  .btn-primary{background:var(--blue-bright);color:#fff}
+  .btn-primary:hover{background:#fff;color:var(--navy);transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.28)}
+  .btn-ghost:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+  .scrolldown{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:#9fb6d4;font-size:13px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:7px;letter-spacing:.1em}
+  .scrolldown .dot{width:22px;height:36px;border:2px solid rgba(255,255,255,.4);border-radius:13px;position:relative}
+  .scrolldown .dot::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:7px;background:#cfe0f4;border-radius:2px;transform:translateX(-50%);animation:sd 1.5s infinite}
+  @keyframes sd{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+  /* sections */
+  section.block{padding:96px 0;scroll-margin-top:70px}
+  section.alt{background:var(--soft)}
+  section.dark{background:radial-gradient(120% 120% at 80% 0%,#143257 0%,var(--navy) 58%,#081a30 100%);color:#fff}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+  .dark .kicker{color:var(--blue-light)}
+  h2.sec{font-size:clamp(28px,3.8vw,46px);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px;max-width:20ch}
+  .dark h2.sec{color:#fff}
+  .sec-lead{font-size:18px;color:var(--muted);max-width:62ch;line-height:1.6}
+  .dark .sec-lead{color:#c4d4e8}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* grids */
+  .grid{display:grid;gap:22px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+
+  /* stat */
+  .stat{border-radius:18px;padding:30px 28px;text-align:center;background:var(--tint-blue);transition:.25s;border:1px solid transparent}
+  .stat:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,50,95,.10)}
+  .stat .big{font-size:clamp(38px,4.6vw,58px);font-weight:800;line-height:1;color:var(--blue-deep)}
+  .stat .cap{margin-top:12px;font-size:15px;color:var(--muted)}
+  .c-green{background:var(--tint-green)} .c-green .big{color:var(--green)}
+  .c-orange{background:var(--tint-orange)} .c-orange .big{color:var(--orange)}
+  .c-red{background:var(--tint-red)} .c-red .big{color:var(--red)}
+  .c-gray{background:var(--tint-gray)} .c-gray .big{color:var(--ink)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.25s}
+  .card:hover{box-shadow:0 14px 34px rgba(15,50,95,.09);transform:translateY(-3px);border-color:#d4e2f2}
+  .card .num{font-size:24px;font-weight:800;color:var(--blue);margin-bottom:10px}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--muted)}
+
+  .srccard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;transition:.25s}
+  .srccard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(15,50,95,.10);border-color:var(--blue-light)}
+  .srccard .tag{font-size:13px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.05em}
+  .srccard h4{font-size:16px;margin:8px 0 6px}
+  .srccard span{font-size:13.5px;color:var(--muted)}
+
+  /* tabs */
+  .tabs{display:inline-flex;gap:6px;background:var(--tint-gray);padding:6px;border-radius:12px;margin-bottom:30px;flex-wrap:wrap}
+  .tabs button{border:0;background:transparent;padding:10px 18px;border-radius:8px;font-weight:700;font-size:14.5px;color:var(--muted);cursor:pointer;transition:.2s}
+  .tabs button.on{background:#fff;color:var(--blue-deep);box-shadow:0 3px 10px rgba(15,50,95,.10)}
+  .panel{display:none}
+  .panel.on{display:block;animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* charts */
+  .chart{width:100%}
+  .ctitle{font-size:15px;font-weight:700;margin-bottom:16px}
+  .plot{position:relative;height:300px;margin-left:40px;border-left:1.5px solid var(--line);border-bottom:1.5px solid var(--line);
+    background-image:repeating-linear-gradient(to top,transparent,transparent calc(20% - 1px),#edf2f7 20%)}
+  .yax{position:absolute;left:-38px;top:-8px;bottom:0;width:32px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;font-size:12px;color:var(--gray)}
+  .bars{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:0 12px}
+  .bargroup{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;flex:1}
+  .bar{width:52%;max-width:70px;border-radius:6px 6px 0 0;position:relative;height:0;transition:height .9s cubic-bezier(.22,1,.36,.18);cursor:pointer}
+  .bar:hover{filter:brightness(1.08)}
+  .lit .bar{height:var(--h)}
+  .bar .vlab{position:absolute;top:-25px;left:50%;transform:translateX(-50%);font-size:14px;font-weight:700;color:var(--ink)}
+  .xlab{margin-left:40px;display:flex;justify-content:space-around;padding:10px 12px 0;font-size:13.5px;color:var(--muted)}
+  .xlab span{flex:1;text-align:center}
+  .pair{display:flex;gap:7px;align-items:flex-end;height:100%;justify-content:center;flex:1}
+  .pair .bar{width:28px}
+  .glegend{display:flex;gap:22px;justify-content:center;margin-top:14px;font-size:13.5px;color:var(--muted)}
+  .glegend span{display:inline-flex;align-items:center;gap:8px}
+  .glegend i{width:13px;height:13px;border-radius:3px}
+
+  .hbars{display:flex;flex-direction:column;gap:14px}
+  .hrow{display:flex;align-items:center;gap:14px}
+  .hrow .lbl{flex:0 0 210px;text-align:right;font-size:14px;color:var(--ink)}
+  .htrack{flex:1;height:28px;background:#eef2f7;border-radius:6px;overflow:hidden}
+  .hfill{height:100%;width:0;border-radius:6px;transition:width 1s cubic-bezier(.22,1,.36,.18);cursor:pointer}
+  .lit .hfill{width:var(--w)}
+  .hrow .hv{flex:0 0 34px;font-weight:700;font-size:14.5px}
+
+  .pie{width:230px;height:230px;border-radius:50%;margin:0 auto;position:relative;
+    background:conic-gradient(var(--blue) 0 86%,var(--blue-light) 86% 100%);box-shadow:0 10px 28px rgba(15,50,95,.16)}
+  .pie .pl1{position:absolute;left:44%;top:60%;color:#fff;font-weight:800;font-size:22px}
+  .pie .pl2{position:absolute;right:13%;top:22%;color:var(--ink);font-weight:800;font-size:17px}
+  .legend{display:flex;gap:20px;justify-content:center;margin-top:20px;font-size:14px}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:13px;height:13px;border-radius:3px}
+
+  .theses{display:flex;flex-direction:column;gap:13px}
+  .thesis{background:var(--tint-blue);border-radius:12px;padding:15px 18px;font-size:15px;display:flex;gap:11px}
+  .thesis .tri{color:var(--blue);font-size:11px;margin-top:5px}
+
+  /* accordion explorer */
+  .acc{display:flex;flex-direction:column;gap:14px}
+  .qitem{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s}
+  .qitem.open{box-shadow:0 14px 36px rgba(15,50,95,.10);border-color:var(--blue-light)}
+  .qhead{display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;user-select:none}
+  .qhead .qn{flex:0 0 auto;width:40px;height:40px;border-radius:10px;background:var(--tint-blue);color:var(--blue-deep);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .qhead .qt{flex:1;font-size:17.5px;font-weight:700}
+  .qhead .qx{font-size:13px;color:var(--muted);font-weight:600}
+  .qhead .chev{transition:.3s;color:var(--blue);font-size:18px}
+  .qitem.open .chev{transform:rotate(180deg)}
+  .qbody{max-height:0;overflow:hidden;transition:max-height .5s ease}
+  .qinner{padding:6px 26px 30px}
+
+  .conc{display:flex;gap:22px;align-items:flex-start;padding:22px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .conc:first-child{border-top:0}
+  .conc .ix{font-size:30px;font-weight:800;color:var(--blue-light);flex:0 0 60px;line-height:1}
+  .conc .ct{font-size:17px;color:#d8e4f3;line-height:1.55}
+  .conc .ct b{color:#fff}
+
+  table{width:100%;border-collapse:collapse;font-size:15.5px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 26px rgba(15,50,95,.07)}
+  thead th{background:var(--navy);color:#fff;text-align:left;padding:15px 22px;font-weight:700;font-size:14.5px}
+  tbody td{padding:14px 22px;border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--tint-blue)}
+  td.dim{color:var(--gray)} td.val{font-weight:800}
+  .v-blue{color:var(--blue)} .v-red{color:var(--red)} .v-green{color:var(--green)} .v-orange{color:var(--orange)}
+
+  /* tooltip */
+  #tip{position:fixed;z-index:200;background:var(--navy);color:#fff;padding:8px 12px;border-radius:9px;font-size:13px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 8px 22px rgba(0,0,0,.25);white-space:nowrap}
+  #tip b{color:var(--blue-light)}
+
+  /* back to top */
+  #totop{position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;border:0;font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:100;box-shadow:0 8px 22px rgba(15,50,95,.28)}
+  #totop.show{opacity:1;pointer-events:auto}
+  #totop:hover{background:var(--blue-deep)}
+
+  footer{background:var(--navy);color:#9fb6d4;padding:42px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer b{color:#fff}
+
+  @media(max-width:900px){
+    .menu{display:none;position:absolute;top:100%;right:14px;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 18px 40px rgba(15,50,95,.16);min-width:210px}
+    .menu.show{display:flex}
+    .nav.attop .menu a{color:var(--muted)}
+    .burger{display:block}
+    .split{grid-template-columns:1fr;gap:34px}
+    .g2,.g3,.g4{grid-template-columns:1fr}
+    .hrow .lbl{flex-basis:120px}
+    section.block{padding:70px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="pbar"></div></div>
+<div id="tip"></div>
+
+<header class="nav attop" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="mk">О</span>Образование как ценность</a>
+    <nav class="menu" id="menu">
+      <a href="#about">Обзор</a>
+      <a href="#context">Контекст</a>
+      <a href="#method">Методология</a>
+      <a href="#results">Результаты</a>
+      <a href="#compare">Сравнение</a>
+      <a href="#conclusions">Выводы</a>
+      <a href="#sources">Источники</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Основы российской государственности · ТюмГУ 2026</div>
+    <h1>Образование как ценность</h1>
+    <p class="sub">Как студенты ТюмГУ воспринимают высшее образование — и чем их взгляд отличается от данных по всей России (ВЦИОМ / ФОМ).</p>
+    <div class="team"><b>Команда:</b> Жерютина А. · Мартынюк А. Ю. · Панов К. Ю. · Тренин А. С. · Муратов М. С.</div>
+    <div class="cta">
+      <a href="#results" class="btn btn-primary">Смотреть результаты →</a>
+      <a href="#method" class="btn btn-ghost">Как мы исследовали</a>
+    </div>
+  </div>
+  <div class="scrolldown"><div class="dot"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <div class="kicker">Зачем это исследование</div>
+        <h2 class="sec">Представления о роли диплома меняются</h2>
+        <p class="sec-lead" style="margin-bottom:16px">По данным ВЦИОМ, среди 18–24-летних доля тех, кто считает высшее образование необходимым для карьеры, снизилась с 80% в 2008 году до 52% в 2018 году.</p>
+        <p class="sec-lead" style="margin-bottom:16px">ФОМ 2025: 47% считают, что люди идут в вуз ради хорошей работы, 34% — по инерции, 11% — ради знаний.</p>
+        <p class="sec-lead">Наш опрос студентов ТюмГУ (n = 100) позволяет сопоставить эти данные с мнением внутри университета.</p>
+      </div>
+      <div class="grid reveal" style="gap:18px">
+        <div class="stat"><div class="big"><span class="count" data-to="80">0</span>%</div><div class="cap">молодёжи: диплом нужен для успеха (2008)</div></div>
+        <div class="stat c-green"><div class="big"><span class="count" data-to="52">0</span>%</div><div class="cap">молодёжи: диплом нужен для успеха (2018)</div></div>
+        <div class="stat c-orange"><div class="big"><span class="count" data-to="47">0</span>%</div><div class="cap">россиян: цель вуза — «хорошая работа» (ФОМ 2025)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<section class="block alt" id="context">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Данные по России</div>
+      <h2 class="sec">Что показывают ВЦИОМ и ФОМ</h2>
+      <p class="sec-lead">Восприятие высшего образования в России: насколько оно обязательно, как оценивают его качество и зачем люди идут в вуз.</p>
+    </div>
+    <div class="reveal" style="margin-top:30px">
+      <div class="tabs" id="ctxtabs">
+        <button class="on" data-p="p-oblig">Обязательность ВО</button>
+        <button data-p="p-quality">Качество ВО (ФОМ)</button>
+        <button data-p="p-motive">Мотивы (ФОМ)</button>
+      </div>
+
+      <div class="panel on" id="p-oblig">
+        <div class="split" style="align-items:flex-start">
+          <div class="chart litzone">
+            <div class="ctitle">Высшее образование необходимо / обязательно, %</div>
+            <div class="plot">
+              <div class="yax"><span>100</span><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span></div>
+              <div class="bars">
+                <div class="bargroup"><div class="bar" style="--h:80%;background:var(--blue)" data-l="ВЦИОМ 2008 · необходимо для карьеры" data-v="80%"><span class="vlab">80</span></div></div>
+                <div class="bargroup"><div class="bar" style="--h:52%;background:var(--green)" data-l="ВЦИОМ 2018 · необходимо для карьеры" data-v="52%"><span class="vlab">52</span></div></div>
+                <div class="bargroup"><div class="bar" style="--h:75%;background:var(--red)" data-l="ТюмГУ 2026 · обязательно для большинства сфер" data-v="75%"><span class="vlab">75</span></div></div>
+              </div>
+            </div>
+            <div class="xlab"><span>2008</span><span>2018</span><span>ТюмГУ 2026</span></div>
+            <p style="margin-left:40px;margin-top:12px;font-size:13px;color:var(--gray);line-height:1.45">Формулировки и выборки отличаются: ВЦИОМ — «необходимо для карьеры» (молодёжь РФ), ТюмГУ — «обязательно хотя бы для большинства сфер». Это сопоставление ориентиров, а не единый временной ряд.</p>
+          </div>
+          <div>
+            <div class="theses">
+              <div class="thesis"><span class="tri">▶</span><span>Среди 18–24-летних доля считающих ВО необходимым для карьеры снизилась с 80% до 52%.</span></div>
+              <div class="thesis"><span class="tri">▶</span><span>ВЦИОМ 2024: 65% россиян считают, что значимость ВО часто преувеличивают.</span></div>
+              <div class="thesis"><span class="tri">▶</span><span>ВЦИОМ 2024: 66% не согласны, что без ВО человек обречён на низкооплачиваемую работу.</span></div>
+              <div class="thesis"><span class="tri">▶</span><span>ТюмГУ 2026: 75% считают ВО обязательным хотя бы для большинства сфер; 20% — безусловно.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" id="p-quality">
+        <div class="chart litzone" style="max-width:640px">
+          <div class="ctitle">Как россияне оценивают качество высшего образования (ФОМ 2025), %</div>
+          <div class="plot">
+            <div class="yax"><span>60</span><span>48</span><span>36</span><span>24</span><span>12</span><span>0</span></div>
+            <div class="bars">
+              <div class="bargroup"><div class="bar" style="--h:41.7%;background:var(--blue-deep)" data-l="Хорошее" data-v="25%"><span class="vlab">25</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:70%;background:var(--blue-bright)" data-l="Удовлетворительное" data-v="42%"><span class="vlab">42</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:30%;background:var(--red)" data-l="Плохое" data-v="18%"><span class="vlab">18</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:25%;background:var(--gray)" data-l="Затрудняюсь" data-v="15%"><span class="vlab">15</span></div></div>
+            </div>
+          </div>
+          <div class="xlab"><span>Хорошее</span><span>Удовл.</span><span>Плохое</span><span>Затр.</span></div>
+        </div>
+      </div>
+
+      <div class="panel" id="p-motive">
+        <div class="chart litzone" style="max-width:640px">
+          <div class="ctitle">Зачем люди идут в вуз — мнение россиян (ФОМ 2025), %</div>
+          <div class="plot">
+            <div class="yax"><span>60</span><span>48</span><span>36</span><span>24</span><span>12</span><span>0</span></div>
+            <div class="bars">
+              <div class="bargroup"><div class="bar" style="--h:78.3%;background:var(--blue)" data-l="Ради работы" data-v="47%"><span class="vlab">47</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:56.7%;background:var(--gray)" data-l="По инерции" data-v="34%"><span class="vlab">34</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:18.3%;background:var(--green)" data-l="Ради знаний" data-v="11%"><span class="vlab">11</span></div></div>
+              <div class="bargroup"><div class="bar" style="--h:13.3%;background:var(--blue-light)" data-l="Другое" data-v="8%"><span class="vlab">8</span></div></div>
+            </div>
+          </div>
+          <div class="xlab"><span>Ради работы</span><span>По инерции</span><span>Ради знаний</span><span>Другое</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="block" id="method">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Как мы это делали</div>
+      <h2 class="sec">Задачи и методология</h2>
+    </div>
+    <div class="grid g4 reveal" style="margin-top:30px">
+      <div class="card"><div class="num">01</div><h3>Анализ данных</h3><p>Вторичный анализ данных ВЦИОМ и ФОМ по теме «Образование как ценность»: 3 источника, ключевые тезисы и инфографика.</p></div>
+      <div class="card"><div class="num">02</div><h3>Своя анкета</h3><p>Разработка авторской анкеты на основе инструментария ВЦИОМ (7 вопросов) и проведение опроса студентов ТюмГУ.</p></div>
+      <div class="card"><div class="num">03</div><h3>Сравнение</h3><p>Сопоставление результатов опроса (n = 100) с общероссийскими показателями ВЦИОМ / ФОМ.</p></div>
+      <div class="card"><div class="num">04</div><h3>Выводы</h3><p>Формулировка выводов и честных ограничений интерпретации результатов.</p></div>
+    </div>
+    <div class="reveal" style="margin-top:40px">
+      <div class="ctitle" style="font-size:16px;margin-bottom:18px">Источники данных</div>
+      <div class="grid g4">
+        <div class="srccard" style="cursor:default"><div class="tag">ВЦИОМ 2024</div><h4>Мониторинг высшего образования</h4><span>Телефонный опрос, n = 1 600</span></div>
+        <div class="srccard" style="cursor:default"><div class="tag">ВЦИОМ 2018</div><h4>Молодёжь и успех</h4><span>Динамика 2008–2018</span></div>
+        <div class="srccard" style="cursor:default"><div class="tag">ФОМ 2025</div><h4>Качество и мотивы ВО</h4><span>ФОМнибус, n = 1 500</span></div>
+        <div class="srccard" style="cursor:default"><div class="tag">ТюмГУ 2026</div><h4>Авторский опрос</h4><span>Яндекс Форма, n = 100</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="block alt" id="results">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Опрос ТюмГУ · n = 100</div>
+      <h2 class="sec">Результаты опроса студентов ТюмГУ</h2>
+      <p class="sec-lead">Семь вопросов авторской анкеты — об отношении к высшему образованию, его обязательности, мотивах и роли диплома при трудоустройстве. Проценты рассчитаны по числу ответивших на каждый вопрос (около 100 человек).</p>
+    </div>
+
+    <div class="acc reveal" id="acc" style="margin-top:34px">
+
+      <div class="qitem open">
+        <div class="qhead"><div class="qn">1</div><div class="qt">Как вы относитесь к высшему образованию?</div><div class="qx">86% — положительно</div><div class="chev">▾</div></div>
+        <div class="qbody"><div class="qinner">
+          <div class="split" style="gap:40px">
+            <div style="text-align:center">
+              <div class="pie"><span class="pl1">86%</span><span class="pl2">14%</span></div>
+              <div class="legend"><span><i style="background:var(--blue)"></i>Положительное</span><span><i style="background:var(--blue-light)"></i>Нейтральное</span></div>
+            </div>
+            <div class="grid" style="gap:14px">
+              <div class="stat" style="text-align:left;padding:18px 22px"><div class="big" style="font-size:30px">86%</div><div class="cap">положительно относятся к высшему образованию</div></div>
+              <div class="stat c-green" style="text-align:left;padding:18px 22px"><div class="big" style="font-size:30px">57,6%</div><div class="cap">имеют или получают диплом прямо сейчас</div></div>
+              <div class="stat c-orange" style="text-align:left;padding:18px 22px"><div class="big" style="font-size:30px">35,4%</div><div class="cap">планируют получить высшее образование</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="qitem">
+        <div class="qhead"><div class="qn">2</div><div class="qt">Насколько ВО обязательно для карьеры?</div><div class="qx">75% — да, хотя бы для большинства сфер</div><div class="chev">▾</div></div>
+        <div class="qbody"><div class="qinner">
+          <div class="split" style="gap:40px">
+            <div class="grid g3" style="gap:16px">
+              <div class="stat"><div class="big">20%</div><div class="cap">безусловно обязательно</div></div>
+              <div class="stat c-green"><div class="big">55%</div><div class="cap">обязательно для большинства сфер</div></div>
+              <div class="stat c-red"><div class="big">75%</div><div class="cap">итого «обязательно» (20% + 55%)</div></div>
+            </div>
+            <div class="theses">
+              <div class="thesis"><span class="tri">▶</span><span>Для сравнения: ВЦИОМ 2008 — 80%, ВЦИОМ 2018 — 52% среди молодёжи России.</span></div>
+              <div class="thesis"><span class="tri">▶</span><span>Студенты ТюмГУ ближе к «обязательности» ВО, чем молодёжь России в 2018 году.</span></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="qitem">
+        <div class="qhead"><div class="qn">3</div><div class="qt">Что важнее для трудоустройства?</div><div class="qx">опыт и навыки — 50,7% выборов</div><div class="chev">▾</div></div>
+        <div class="qbody"><div class="qinner">
+          <div class="split" style="gap:40px;align-items:center">
+            <div class="hbars litzone">
+              <div class="hrow"><div class="lbl">Опыт работы и портфолио</div><div class="htrack"><div class="hfill" style="--w:77%;background:var(--blue)" data-l="Опыт работы и портфолио" data-v="27 отметок"></div></div><div class="hv">27</div></div>
+              <div class="hrow"><div class="lbl">Реальные проф. навыки</div><div class="htrack"><div class="hfill" style="--w:68.5%;background:var(--blue)" data-l="Реальные навыки" data-v="24 отметки"></div></div><div class="hv">24</div></div>
+              <div class="hrow"><div class="lbl">Личные связи / нетворкинг</div><div class="htrack"><div class="hfill" style="--w:51.4%;background:var(--gray)" data-l="Нетворкинг" data-v="18 отметок"></div></div><div class="hv">18</div></div>
+              <div class="hrow"><div class="lbl">Наличие любого диплома</div><div class="htrack"><div class="hfill" style="--w:45.7%;background:var(--pink)" data-l="Любой диплом" data-v="16 отметок"></div></div><div class="hv">16</div></div>
+              <div class="hrow"><div class="lbl">Диплом престижного вуза</div><div class="htrack"><div class="hfill" style="--w:42.8%;background:var(--red)" data-l="Престижный диплом" data-v="15 отметок"></div></div><div class="hv">15</div></div>
+            </div>
+            <div class="grid" style="gap:14px">
+              <div class="stat"><div class="big" style="font-size:34px">50,7%</div><div class="cap">опыт + навыки</div></div>
+              <div class="stat c-orange"><div class="big" style="font-size:34px">31,8%</div><div class="cap">любой диплом</div></div>
+              <div class="stat c-gray"><div class="big" style="font-size:34px">17,5%</div><div class="cap">нетворкинг</div></div>
+            </div>
+          </div>
+          <p class="sec-lead" style="margin-top:22px;font-size:15px">Вопрос с множественным выбором: всего 211 отметок от 100 студентов. Проценты — это доля от всех отметок (какие факторы выбирали чаще), а не доля студентов.</p>
+        </div></div>
+      </div>
+
+      <div class="qitem">
+        <div class="qhead"><div class="qn">4</div><div class="qt">Зачем студенты идут в вуз?</div><div class="qx">знания — 41% (в России 11%)</div><div class="chev">▾</div></div>
+        <div class="qbody"><div class="qinner">
+          <div class="chart litzone">
+            <div class="ctitle">Мотивы поступления: ТюмГУ 2026 против ФОМ 2025, %</div>
+            <div class="plot">
+              <div class="yax"><span>60</span><span>48</span><span>36</span><span>24</span><span>12</span><span>0</span></div>
+              <div class="bars">
+                <div class="bargroup"><div class="pair">
+                  <div class="bar" style="--h:68.3%;background:var(--blue)" data-l="ТюмГУ · Ради знаний" data-v="41%"><span class="vlab">41</span></div>
+                  <div class="bar" style="--h:18.3%;background:var(--blue-light)" data-l="ФОМ · Ради знаний" data-v="11%"><span class="vlab">11</span></div></div></div>
+                <div class="bargroup"><div class="pair">
+                  <div class="bar" style="--h:63.3%;background:var(--blue)" data-l="ТюмГУ · Работа/корочка" data-v="38%"><span class="vlab">38</span></div>
+                  <div class="bar" style="--h:78.3%;background:var(--blue-light)" data-l="ФОМ · Работа/корочка" data-v="47%"><span class="vlab">47</span></div></div></div>
+                <div class="bargroup"><div class="pair">
+                  <div class="bar" style="--h:25%;background:var(--blue)" data-l="ТюмГУ · По инерции" data-v="15%"><span class="vlab">15</span></div>
+                  <div class="bar" style="--h:56.7%;background:var(--blue-light)" data-l="ФОМ · По инерции" data-v="34%"><span class="vlab">34</span></div></div></div>
+                <div class="bargroup"><div class="pair">
+                  <div class="bar" style="--h:10%;background:var(--blue)" data-l="ТюмГУ · Другое" data-v="6%"><span class="vlab">6</span></div>
+                  <div class="bar" style="--h:13.3%;background:var(--blue-light)" data-l="ФОМ · Другое" data-v="8%"><span class="vlab">8</span></div></div></div>
+              </div>
+            </div>
+            <div class="xlab"><span>Ради знаний</span><span>Работа / корочка</span><span>По инерции</span><span>Другое</span></div>
+            <div class="glegend"><span><i style="background:var(--blue)"></i>ТюмГУ 2026</span><span><i style="background:var(--blue-light)"></i>ФОМ 2025</span></div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="qitem">
+        <div class="qhead"><div class="qn">5</div><div class="qt">«Высшее образование устарело и не соответствует рынку»</div><div class="qx">44% скорее согласны</div><div class="chev">▾</div></div>
+        <div class="qbody"><div class="qinner">
+          <div class="split" style="gap:40px;align-items:center">
+            <div class="stat c-red" style="padding:38px"><div class="big" style="font-size:64px">44%</div><div class="cap">полностью или скорее согласны с тезисом</div></div>
+            <p class="sec-lead">Заметная доля студентов разделяет критический взгляд на актуальность вузовских программ — это согласуется с общероссийским запросом на практико-ориентированное образование (опыт и навыки важнее диплома).</p>
+          </div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="block" id="compare">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">ТюмГУ vs. Россия</div>
+      <h2 class="sec">Сопоставление показателей</h2>
+      <p class="sec-lead">Прямое сравнение условно — это разные исследования с разными выборками, но контраст между студентами ТюмГУ и данными по России нагляден.</p>
+    </div>
+    <div class="reveal" style="margin-top:28px">
+      <table>
+        <thead><tr><th>Показатель</th><th>ВЦИОМ / ФОМ</th><th>ТюмГУ 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Положительное отношение к ВО</td><td class="dim">—</td><td class="val v-blue">86%</td></tr>
+          <tr><td>ВО обязательно хотя бы для большинства сфер</td><td class="dim">52% (ВЦИОМ 2018, 18–24)</td><td class="val v-red">75%</td></tr>
+          <tr><td>ВО обязательно без оговорок</td><td class="dim">—</td><td class="val v-green">20%</td></tr>
+          <tr><td>Главный мотив — знания</td><td class="dim">11% (ФОМ 2025)</td><td class="val v-blue">41%</td></tr>
+          <tr><td>Главный мотив — работа / корочка</td><td class="dim">47% (ФОМ 2025)</td><td class="val v-green">38%</td></tr>
+          <tr><td>По инерции / под давлением</td><td class="dim">34% (ФОМ 2025)</td><td class="val v-orange">15%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSIONS -->
+<section class="block dark" id="conclusions">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Главное</div>
+      <h2 class="sec">Ключевые результаты</h2>
+    </div>
+    <div class="split" style="margin-top:30px;align-items:flex-start">
+      <div class="reveal">
+        <div class="conc"><div class="ix">01</div><div class="ct">75% студентов считают ВО обязательным хотя бы для большинства сфер; 20% — безусловно, 55% — с оговоркой.</div></div>
+        <div class="conc"><div class="ix">02</div><div class="ct">86% относятся к высшему образованию положительно или скорее положительно.</div></div>
+        <div class="conc"><div class="ix">03</div><div class="ct">41% называют главным мотивом получение знаний; по России (ФОМ 2025) — лишь 11%.</div></div>
+        <div class="conc"><div class="ix">04</div><div class="ct">В трудоустройстве опыт и навыки набрали 50,7% выборов, диплом — 31,8%, нетворкинг — 17,5%.</div></div>
+        <div class="conc"><div class="ix">05</div><div class="ct">44% скорее согласны, что высшее образование устарело и не соответствует рынку.</div></div>
+      </div>
+      <div class="reveal">
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)">
+          <h3 style="color:#fff;margin-bottom:16px">Что важно учитывать</h3>
+          <div style="display:flex;flex-direction:column;gap:13px;color:#cdddf0;font-size:15px">
+            <div>· ТюмГУ 2026: онлайн-опрос, n = 100, май–июнь 2026.</div>
+            <div>· 75% = 20% («да, без него почти невозможно») + 55% («в большинстве сфер — да»).</div>
+            <div>· Вопрос о трудоустройстве — множественный выбор, 211 отметок.</div>
+            <div>· ВЦИОМ / ФОМ и ТюмГУ — разные исследования, а не одна динамика.</div>
+            <div>· Результаты относятся к студентам ТюмГУ, а не ко всей молодёжи.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="block alt" id="sources">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Проверяемость</div>
+      <h2 class="sec">Источники</h2>
+      <p class="sec-lead">Данные ВЦИОМ, ФОМ и авторского опроса студентов ТюмГУ.</p>
+    </div>
+    <div class="grid g2 reveal" style="margin-top:28px">
+      <a class="srccard" href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/vysshee-obrazovanie-v-rossii-monitoring" target="_blank"><div class="tag">ВЦИОМ · 2024</div><h4>Высшее образование в России: мониторинг</h4><span>26 ноября 2024 · телефонный опрос, n = 1 600 · wciom.ru ↗</span></a>
+      <a class="srccard" href="https://wciom.ru/analytical-reviews/analiticheskii-obzor/vysshee-obrazovanie-put-k-uspekhu-ili-lishnyaya-trata-vremeni-i-deneg" target="_blank"><div class="tag">ВЦИОМ · 2018</div><h4>Высшее образование: путь к успеху или лишняя трата?</h4><span>1 августа 2018 · опрос, n = 1 600 · wciom.ru ↗</span></a>
+      <a class="srccard" href="https://fom.ru/Nauka-i-obrazovanie/15187" target="_blank"><div class="tag">ФОМ · 2025</div><h4>Высшее образование</h4><span>апрель 2025 · ФОМнибус, n = 1 500 · fom.ru ↗</span></a>
+      <a class="srccard" href="https://forms.yandex.ru/u/6a0ef6f702848f92d4b8cb02/" target="_blank"><div class="tag">ТюмГУ · 2026</div><h4>Авторский опрос студентов</h4><span>май 2026 · Яндекс Форма, n = 100, Тюмень ↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Образование как ценность</b> · Проект по ОРГ · ТюмГУ, 2026</div>
+  </div>
+</footer>
+
+<button id="totop" aria-label="Наверх">↑</button>
+
+<script>
+  // progress + nav state
+  const pbar=document.getElementById('pbar');
+  const nav=document.getElementById('nav');
+  const totop=document.getElementById('totop');
+  function onScroll(){
+    const h=document.documentElement;
+    const sc=h.scrollTop;
+    const max=h.scrollHeight-h.clientHeight;
+    pbar.style.width=(sc/max*100)+'%';
+    nav.classList.toggle('attop', sc < window.innerHeight-80);
+    totop.classList.toggle('show', sc>600);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  totop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // burger
+  const burger=document.getElementById('burger');
+  const menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('show'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('show')));
+
+  // reveal on scroll + light up charts
+  const lightZones=z=>z.querySelectorAll('.litzone').forEach(c=>c.classList.add('lit'));
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); lightZones(e.target); }});
+  },{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // count-up
+  const fmt=n=>String(n).replace('.',',');
+  const cio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target, to=parseFloat(el.dataset.to); let t0=null;
+      const step=ts=>{ if(!t0)t0=ts; const p=Math.min((ts-t0)/1100,1);
+        const v=(to*(1-Math.pow(1-p,3)));
+        el.textContent=fmt(Number.isInteger(to)?Math.round(v):v.toFixed(1));
+        if(p<1)requestAnimationFrame(step); else el.textContent=fmt(to); };
+      requestAnimationFrame(step); cio.unobserve(el);
+    });
+  },{threshold:.6});
+  document.querySelectorAll('.count').forEach(el=>cio.observe(el));
+
+  // scrollspy
+  const links=[...menu.querySelectorAll('a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const sio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      const id='#'+e.target.id;
+      links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>s&&sio.observe(s));
+
+  // context tabs
+  const tabs=document.getElementById('ctxtabs');
+  tabs.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b)return;
+    tabs.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.querySelectorAll('#context .panel').forEach(p=>p.classList.remove('on'));
+    const panel=document.getElementById(b.dataset.p);
+    panel.classList.add('on');
+    lightZones(panel);
+  });
+
+  // accordion
+  document.querySelectorAll('.qitem').forEach(item=>{
+    const head=item.querySelector('.qhead');
+    const body=item.querySelector('.qbody');
+    const setH=()=>{ body.style.maxHeight=item.classList.contains('open')?(body.scrollHeight+40)+'px':'0px'; };
+    head.addEventListener('click',()=>{
+      const wasOpen=item.classList.contains('open');
+      document.querySelectorAll('.qitem').forEach(i=>{i.classList.remove('open');i.querySelector('.qbody').style.maxHeight='0px';});
+      if(!wasOpen){ item.classList.add('open'); lightZones(item); setH();
+        setTimeout(()=>{ if(item.classList.contains('open')) body.style.maxHeight=(body.scrollHeight+40)+'px'; },550); }
+    });
+    if(item.classList.contains('open')){ lightZones(item); requestAnimationFrame(()=>requestAnimationFrame(setH)); }
+  });
+  window.addEventListener('resize',()=>{const o=document.querySelector('.qitem.open');if(o){const b=o.querySelector('.qbody');b.style.maxHeight=(b.scrollHeight+40)+'px';}});
+
+  // tooltip for bars
+  const tip=document.getElementById('tip');
+  document.querySelectorAll('.bar[data-l],.hfill[data-l]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ tip.innerHTML=el.dataset.l+': <b>'+el.dataset.v+'</b>'; tip.style.opacity='1'; });
+    el.addEventListener('mousemove',ev=>{ tip.style.left=(ev.clientX+14)+'px'; tip.style.top=(ev.clientY-14)+'px'; });
+    el.addEventListener('mouseleave',()=>{ tip.style.opacity='0'; });
+  });
+</script>
+</body>
+</html>
